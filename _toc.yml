@@ -1,0 +1,203 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+  # - caption: "מידע כללי"
+  #   chapters:
+  #     - file: 0_intro
+  #       title: "מנהלות"
+
+  - caption: "שבועות הלמידה"
+    numbered: true
+    chapters:
+      - file: course/weeks/week_1
+
+        title: "שבוע 1: מבוא, משתנים וטיפוסים"
+
+        sections:
+          - file: vendor/virtual-pyprog/0_0_objectives
+            title: "מבוא"
+          - file: vendor/virtual-pyprog/0_1_hardware-to-software
+            title: "חומרה, תוכנה והשיטה הבינארית"
+          - file: vendor/virtual-pyprog/0_2_python
+            title: "שפת התכנות פייתון"
+          - file: vendor/virtual-pyprog/0_3_variables-and-assignments
+            title: "משתנים והשמות"
+          - file: vendor/virtual-pyprog/1_0_intro_types
+            title: "מבוא לטיפוסים"
+          - file: vendor/virtual-pyprog/1_1_numerical_types
+            title: "טיפוסים נומריים"
+          - file: vendor/virtual-pyprog/1_2_booleans
+            title: "משתנים בוליאניים"
+          - file: vendor/virtual-pyprog/1_3_strings
+            title: "מחרוזות"
+          - file: vendor/virtual-pyprog/1_4_conversion
+            title: "המרות בין טיפוסים"
+
+      - file: course/weeks/week_2
+        title: "שבוע 2: תנאים ופונקציות"
+        sections:
+          - file: vendor/virtual-pyprog/2_0_intro-conditions
+            title: "מבוא לתנאים"
+          - file: vendor/virtual-pyprog/2_1_if-else-statements
+            title: "פקודות if ו־else"
+          - file: vendor/virtual-pyprog/2_2_nested-ifs
+            title: "תנאים מקוננים"
+          - file: vendor/virtual-pyprog/2_3_elif
+            title: "elif ותנאים מרובים"
+          - file: vendor/virtual-pyprog/2_4_logical-operators-in-ifs
+            title: "אופרטורים לוגיים בתנאים"
+          - file: vendor/virtual-pyprog/3_0_intro-functions
+            title: "מבוא לפונקציות"
+          - file: vendor/virtual-pyprog/3_1_builtin-functions
+            title: "פונקציות מובנות בפייתון"
+          - file: vendor/virtual-pyprog/3_2_building-functions
+            title: "בניית פונקציות משלכם"
+          - file: vendor/virtual-pyprog/3_3_formal-and-actual-variables
+            title: "פרמטרים וארגומנטים"
+          - file: vendor/virtual-pyprog/3_5_caller-callee
+            title: "קריאה הדדית בין פונקציות"
+          - file: vendor/virtual-pyprog/3_4_advanced-examples
+            title: "דוגמאות מתקדמות"
+
+      - file: course/weeks/week_3
+        title: "שבוע 3: רשימות "
+        sections:
+          - file: vendor/virtual-pyprog/4_0_intro-list
+            title: "מבוא לרשימות"
+          - file: vendor/virtual-pyprog/4_1_list-operators-indices
+            title: "אופרטורים ואינדקסים"
+          - file: vendor/virtual-pyprog/4_2_built-in-functions-in-list
+            title: "פונקציות מובנות לרשימות"
+          - file: vendor/virtual-pyprog/4_3_list-methods
+            title: "מתודות של רשימות"
+          - file: vendor/virtual-pyprog/4_4_nested_lists
+            title: "רשימות מקוננות"
+          - file: vendor/virtual-pyprog/4_5_list-examples
+            title: "דוגמאות מעשיות"
+
+      - file: course/weeks/week_4
+        title: "שבוע 4: לולאות"
+        sections:
+          - file: vendor/virtual-pyprog/5_0_intro-loops
+            title: "מבוא ללולאות"
+          - file: vendor/virtual-pyprog/6_0_for_loops
+            title: "לולאות for"
+          - file: vendor/virtual-pyprog/6_1_ranges-and-for
+            title: "range ולולאות for"
+          - file: vendor/virtual-pyprog/6_2_for-examples
+            title: "דוגמאות ל־for"
+          - file: vendor/virtual-pyprog/6_3_for-summary
+            title: "סיכום לולאות for"
+          - file: vendor/virtual-pyprog/7_0_while_loops
+            title: "לולאות while"
+          - file: vendor/virtual-pyprog/7_1_while-examples
+            title: "דוגמאות ל־while"
+          - file: vendor/virtual-pyprog/8_0_while_vs_for
+            title: "while לעומת for"
+          - file: vendor/virtual-pyprog/8_1_break_and_continue
+            title: "break ו־continue"
+          - file: vendor/virtual-pyprog/8_2_nested_loops
+            title: "לולאות מקוננות"
+
+      - file: course/weeks/week_6
+        title: "שבוע 5: מבני נתונים"
+        sections:
+          - file: vendor/virtual-pyprog/10_0_mutable-vs-immutable
+            title: "תזכורת: Mutable vs Immutable"
+          # - file: vendor/virtual-pyprog/10_1_memory-in-functions
+          #   title: "זיכרון והתנהגות בפונקציות"
+          # - file: vendor/virtual-pyprog/11_0_advanced_function_usage
+          #   title: "שימושים מתקדמים בפונקציות"
+          - file: vendor/virtual-pyprog/12_0_data_structures
+            title: "מבני נתונים"
+          - file: vendor/virtual-pyprog/12_1_tuples
+            title: "Tuples"
+          - file: vendor/virtual-pyprog/12_2_dicts
+            title: "Dictionaries"
+          # - file: vendor/virtual-pyprog/13_0_string-formats
+          #   title: "עיצוב מחרוזות"
+            
+      - file: course/weeks/week_7
+        title: "שבוע 6: OOP"
+        sections:
+          - file: vendor/virtual-pyprog/17_0_oop-intro
+            title: "מבוא ל־OOP"
+          - file: vendor/virtual-pyprog/17_1_oop-implementation
+            title: "מימוש עקרונות OOP"
+
+      - file: course/weeks/week_8
+        title: ":שבוע 7  Numpy"
+        sections:
+          - file: course/weeks/week_8/8_0_intro_libs
+            title: "מבוא להתקנת ספריות" 
+          - file: vendor/virtual-pyprog/18_0_numpy-intro
+            title: "מבוא ל Numpy"
+          - file: vendor/virtual-pyprog/18_1_create-array
+            title: "מערכים ב NumPy"
+          # - file: course/weeks/week_8/8_1_arrays
+          #   title: "Arrays"
+          - file: course/weeks/week_8/8_2_arrays_indexing
+            title: "גישה לאיברים במערך"
+          - file: course/weeks/week_8/8_3_datatypes
+            title: "טיפוסי נתונים במערכים"
+          - file: course/weeks/week_8/8_4_array_math
+            title: "פעולות מתמטיות בין מערכים"
+          - file: course/weeks/week_8/8_5_broadcasting
+            title: "Broadcasting"
+
+
+      # - file: course/weeks/week_9
+      #   title: "שבוע 9: Matplotlib, Probabilities & Histograms"
+      #   sections:
+      #     - file: course/weeks/week_9/9_1_matplotlib
+      #       title: "Matplotlib: Basics"
+      #     - file: course/weeks/week_9/9_2_example_matplotlib
+      #       title: "דוגמה מסכמת: Matplotlib"
+      #     - file: course/weeks/week_9/9_3_prob_hists
+      #       title: "Probabilities & Histograms"
+
+      # - file: course/weeks/week_10
+      #   title: "שבוע 10: Numpy מתקדם"
+      #   sections:
+      #     - file: course/weeks/week_10/10_1_matrix_operations
+      #       title: "פעולות מטריציוניות מתקדמות"
+      #     - file: course/weeks/week_10/10_2_linear_system
+      #       title: "פתרון מערכות ליניאריות"
+      #     - file: course/weeks/week_10/10_3_eigen_values
+      #       title: "ערכים ווקטורים עצמיים"
+      #     - file: course/weeks/week_10/10_4_SVD
+      #       title: "SVD"
+      #     - file: course/weeks/week_10/10_7_exercises
+      #       title: "תרגול עצמי"
+      #     - file: course/weeks/week_10/10_5_example_image_SVD
+      #       title: "תרגול: דחיסת תמונה באמצעות SVD"
+      #     - file: course/weeks/week_10/10_6_example_PI_MC
+      #       title: "תרגול: הערכת π בשיטת מונטה־קרלו"
+
+      # - file: course/weeks/week_11
+      #   title: "שבוע 11: SciPy"
+      #   sections:
+      #     - file: course/weeks/week_11/11_1_physical_consts
+      #       title: "קבועים פיזיקליים ויחידות"
+      #     - file: course/weeks/week_11/11_2_integration
+      #       title: "אינטגרציה נומרית"
+      #     - file: course/weeks/week_11/11_3_optimization
+      #       title: "אופטימיזציה" 
+
+      # - file: course/weeks/week_12
+      #   title: "שבוע 12: Pandas"
+      #   sections:
+      #     - file: vendor/virtual-pyprog/19_1_pandas-intro
+      #       title: "מבוא לעבודה עם Pandas"
+      #     - file: vendor/virtual-pyprog/19_2_create-df
+      #       title: "יצירת טבלה"
+      #     - file: vendor/virtual-pyprog/19_3_access-df
+      #       title: "גישה לנתונים בטבלה"
+      #     - file: vendor/virtual-pyprog/19_4_basic_editing
+      #       title: "עריכת טבלה"
+
+
