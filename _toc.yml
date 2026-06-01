@@ -130,7 +130,7 @@ parts:
             title: "מימוש עקרונות OOP"
 
       - file: course/weeks/week_8
-        title: ":שבוע 7  Numpy"
+        title: "שבוע 7: Numpy"
         sections:
           - file: course/weeks/week_8/8_0_intro_libs
             title: "מבוא להתקנת ספריות" 
@@ -148,17 +148,17 @@ parts:
             title: "פעולות מתמטיות בין מערכים"
           - file: course/weeks/week_8/8_5_broadcasting
             title: "Broadcasting"
+          - file: course/weeks/week_8/8_6_chemistry_examples
+            title: "דוגמאות לחישובים נומריים בכימיה"
 
 
-      # - file: course/weeks/week_9
-      #   title: "שבוע 9: Matplotlib, Probabilities & Histograms"
-      #   sections:
-      #     - file: course/weeks/week_9/9_1_matplotlib
-      #       title: "Matplotlib: Basics"
-      #     - file: course/weeks/week_9/9_2_example_matplotlib
-      #       title: "דוגמה מסכמת: Matplotlib"
-      #     - file: course/weeks/week_9/9_3_prob_hists
-      #       title: "Probabilities & Histograms"
+      - file: course/weeks/week_9
+        title: "שבוע 8: Matplotlib וויזואליזציה של נתונים"
+        sections:
+          - file: course/weeks/week_9/9_1_matplotlib
+            title: "Matplotlib: Basics"
+          - file: course/weeks/week_9/9_2_new_kinetics_example
+            title: "דוגמה מסכמת: קינטיקה מסדר ראשון"
 
       # - file: course/weeks/week_10
       #   title: "שבוע 10: Numpy מתקדם"
