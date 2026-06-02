@@ -4,6 +4,13 @@ p, li, ul, h1, h2, h3, h4 {
     text-align: right;
 }
 
+.math,
+.MathJax,
+mjx-container {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
 /* .cell:has(img) {
     direction: rtl;
 } */
@@ -196,6 +203,5 @@ html, body { overflow-x: hidden; }
 .custom-text-content {
   color: purple
 }
-
 
 
