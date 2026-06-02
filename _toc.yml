@@ -103,7 +103,7 @@ parts:
           - file: vendor/virtual-pyprog/8_2_nested_loops
             title: "לולאות מקוננות"
 
-      - file: course/weeks/week_6
+      - file: course/weeks/week_5
         title: "שבוע 5: מבני נתונים"
         sections:
           - file: vendor/virtual-pyprog/10_0_mutable-vs-immutable
@@ -121,7 +121,7 @@ parts:
           # - file: vendor/virtual-pyprog/13_0_string-formats
           #   title: "עיצוב מחרוזות"
             
-      - file: course/weeks/week_7
+      - file: course/weeks/week_6
         title: "שבוע 6: OOP"
         sections:
           - file: vendor/virtual-pyprog/17_0_oop-intro
@@ -129,10 +129,10 @@ parts:
           - file: vendor/virtual-pyprog/17_1_oop-implementation
             title: "מימוש עקרונות OOP"
 
-      - file: course/weeks/week_8
+      - file: course/weeks/week_7
         title: "שבוע 7: Numpy"
         sections:
-          - file: course/weeks/week_8/8_0_intro_libs
+          - file: course/weeks/week_7/8_0_intro_libs
             title: "מבוא להתקנת ספריות" 
           - file: vendor/virtual-pyprog/18_0_numpy-intro
             title: "מבוא ל Numpy"
@@ -140,24 +140,24 @@ parts:
             title: "מערכים ב NumPy"
           # - file: course/weeks/week_8/8_1_arrays
           #   title: "Arrays"
-          - file: course/weeks/week_8/8_2_arrays_indexing
+          - file: course/weeks/week_7/8_2_arrays_indexing
             title: "גישה לאיברים במערך"
-          - file: course/weeks/week_8/8_3_datatypes
+          - file: course/weeks/week_7/8_3_datatypes
             title: "טיפוסי נתונים במערכים"
-          - file: course/weeks/week_8/8_4_array_math
+          - file: course/weeks/week_7/8_4_array_math
             title: "פעולות מתמטיות בין מערכים"
-          - file: course/weeks/week_8/8_5_broadcasting
+          - file: course/weeks/week_7/8_5_broadcasting
             title: "Broadcasting"
-          - file: course/weeks/week_8/8_6_chemistry_examples
+          - file: course/weeks/week_7/8_6_chemistry_examples
             title: "דוגמאות לחישובים נומריים בכימיה"
 
 
-      - file: course/weeks/week_9
+      - file: course/weeks/week_8
         title: "שבוע 8: Matplotlib וויזואליזציה של נתונים"
         sections:
-          - file: course/weeks/week_9/9_1_matplotlib
+          - file: course/weeks/week_8/9_1_matplotlib
             title: "Matplotlib: Basics"
-          - file: course/weeks/week_9/9_2_new_kinetics_example
+          - file: course/weeks/week_8/9_2_new_kinetics_example
             title: "דוגמה מסכמת: קינטיקה מסדר ראשון"
 
       # - file: course/weeks/week_10
