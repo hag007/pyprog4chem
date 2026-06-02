@@ -160,6 +160,16 @@ parts:
           - file: course/weeks/week_8/9_2_new_kinetics_example
             title: "דוגמה מסכמת: קינטיקה מסדר ראשון"
 
+      - file: course/weeks/week_9
+        title: "שבוע 9: SciPy לחישובים מדעיים בכימיה"
+        sections:
+          - file: course/weeks/week_9/9_1_fitting_and_distributions
+            title: "התאמת מודלים והתפלגויות בעזרת SciPy"
+          - file: course/weeks/week_9/9_2_simulation
+            title: "סימולציה של תגובה אנזימטית בעזרת SciPy"
+          - file: course/weeks/week_9/9_3_pca
+            title: "PCA של ספקטרים מלאכותיים בעזרת SciPy"
+
       # - file: course/weeks/week_10
       #   title: "שבוע 10: Numpy מתקדם"
       #   sections:
@@ -199,5 +209,4 @@ parts:
       #       title: "גישה לנתונים בטבלה"
       #     - file: vendor/virtual-pyprog/19_4_basic_editing
       #       title: "עריכת טבלה"
-
 
