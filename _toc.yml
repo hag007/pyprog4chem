@@ -168,7 +168,7 @@ parts:
           - file: course/weeks/week_9/9_2_simulation
             title: "סימולציה של תגובה אנזימטית בעזרת SciPy"
           - file: course/weeks/week_9/9_3_pca
-            title: "PCA של ספקטרים מלאכותיים בעזרת SciPy"
+            title: "ניתוח PCA של ספקטרום בעזרת SciPy"
 
       # - file: course/weeks/week_10
       #   title: "שבוע 10: Numpy מתקדם"
