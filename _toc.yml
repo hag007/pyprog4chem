@@ -198,15 +198,15 @@ parts:
       #     - file: course/weeks/week_11/11_3_optimization
       #       title: "אופטימיזציה" 
 
-      # - file: course/weeks/week_12
-      #   title: "שבוע 12: Pandas"
-      #   sections:
-      #     - file: vendor/virtual-pyprog/19_1_pandas-intro
-      #       title: "מבוא לעבודה עם Pandas"
-      #     - file: vendor/virtual-pyprog/19_2_create-df
-      #       title: "יצירת טבלה"
-      #     - file: vendor/virtual-pyprog/19_3_access-df
-      #       title: "גישה לנתונים בטבלה"
-      #     - file: vendor/virtual-pyprog/19_4_basic_editing
-      #       title: "עריכת טבלה"
+      - file: course/weeks/week_12
+        title: "שבוע 10: Pandas"
+        sections:
+          - file: vendor/virtual-pyprog/19_1_pandas-intro
+            title: "מבוא לעבודה עם Pandas"
+          - file: vendor/virtual-pyprog/19_2_create-df
+            title: "יצירת טבלה"
+          - file: vendor/virtual-pyprog/19_3_access-df
+            title: "גישה לנתונים בטבלה"
+          - file: vendor/virtual-pyprog/19_4_basic_editing
+            title: "עריכת טבלה"
 
