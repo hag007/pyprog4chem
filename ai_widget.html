@@ -1,0 +1,254 @@
+<div id="ai-block" style="
+    position:fixed; bottom:20px; left:20px; width:360px;
+    background:#f0f9f4; border-radius:10px; border:1px solid #00BCD4;
+    font-family:Arial,sans-serif; z-index:9999;
+    box-shadow:0 4px 20px rgba(0,0,0,0.18); user-select:none;">
+
+  <!-- draggable header -->
+  <div id="ai-header" style="
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 14px; background:#00BCD4; border-radius:9px 9px 0 0;
+      cursor:move;">
+    <span style="color:white; font-weight:bold; font-size:14px;">🤖 Ask PyProf.</span>
+    <div style="display:flex; gap:6px;">
+      <button onclick="clearChat(event)" title="נקה שיחה"
+        style="background:rgba(255,255,255,0.25); border:none; color:white;
+               border-radius:4px; width:24px; height:24px; font-size:13px;
+               cursor:pointer; line-height:1;">🗑</button>
+      <button id="ai-toggle-btn" onclick="toggleAI(event)" title="מזער / הגדל"
+        style="background:rgba(255,255,255,0.25); border:none; color:white;
+               border-radius:4px; width:24px; height:24px; font-size:14px;
+               cursor:pointer; line-height:1;">−</button>
+    </div>
+  </div>
+
+  <!-- collapsible body -->
+  <div id="ai-body" style="padding:14px; direction:rtl; display:flex; flex-direction:column; gap:8px;">
+
+    <!-- chat thread -->
+    <div id="ai-chat" style="
+        display:none; flex-direction:column; gap:6px;
+        max-height:280px; overflow-y:auto;
+        padding-right:2px;">
+    </div>
+
+    <!-- input -->
+    <textarea id="ai-prompt-input" rows="3"
+      placeholder="כתבו כאן את השאלה שלכם..."
+      style="width:100%; padding:8px; font-size:13px; border-radius:6px;
+             border:1px solid #ccc; resize:vertical; box-sizing:border-box;
+             font-family:Arial,sans-serif; direction:rtl;"></textarea>
+
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button id="ai-send-btn" onclick="sendToAI()"
+        style="padding:8px 18px; background:#00BCD4; color:white; border:none;
+               border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; flex-shrink:0;">
+        &#9654; שלח
+      </button>
+      <div id="ai-loading" style="display:none; color:#555; font-size:12px;">⏳ ממתין...</div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .ai-bubble { border-radius:8px; padding:8px 10px; font-size:13px; line-height:1.6; max-width:100%; word-break:break-word; }
+  .ai-bubble-user      { background:#d0f0fb; align-self:flex-end;  text-align:right; direction:rtl; }
+  .ai-bubble-assistant { background:white;   align-self:flex-start; border:1px solid #ddd; }
+  .ai-bubble h1,.ai-bubble h2,.ai-bubble h3 { margin-top:6px; margin-bottom:3px; font-size:13px; }
+  .ai-bubble p  { margin:3px 0; }
+  .ai-bubble ul,.ai-bubble ol { padding-inline-start:16px; margin:3px 0; }
+  .ai-bubble pre { background:#f4f4f4; padding:7px; border-radius:5px; overflow-x:auto;
+                   margin:5px 0; direction:ltr; text-align:left; }
+  .ai-bubble code { background:#f4f4f4; padding:1px 4px; border-radius:3px;
+                    font-family:monospace; font-size:12px; direction:ltr; unicode-bidi:embed; }
+  .ai-bubble pre code { background:none; padding:0; }
+  #ai-send-btn:hover { opacity:0.85; }
+</style>
+
+<script>
+document.title = document.title; //'Ask PyProf. | '
+
+var conversationHistory = [];   // [{role, content}, ...] — excludes system message
+
+/* ── minimize / maximize ── */
+var aiMinimized = false;
+function toggleAI(e) {
+  e.stopPropagation();
+  aiMinimized = !aiMinimized;
+  document.getElementById('ai-body').style.display = aiMinimized ? 'none' : 'flex';
+  document.getElementById('ai-toggle-btn').textContent = aiMinimized ? '+' : '−';
+  document.getElementById('ai-block').style.borderRadius = aiMinimized ? '9px' : '10px';
+}
+
+/* ── clear chat ── */
+function clearChat(e) {
+  if (e) e.stopPropagation();
+  conversationHistory = [];
+  var chat = document.getElementById('ai-chat');
+  chat.innerHTML = '';
+  chat.style.display = 'none';
+}
+
+/* ── drag ── */
+(function() {
+  var header = document.getElementById('ai-header');
+  var block  = document.getElementById('ai-block');
+  var dragging = false, ox = 0, oy = 0;
+  header.addEventListener('mousedown', function(e) {
+    if (e.target.tagName === 'BUTTON') return;
+    dragging = true;
+    var rect = block.getBoundingClientRect();
+    ox = e.clientX - rect.left;
+    oy = e.clientY - rect.top;
+    block.style.transition = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    var x = Math.max(0, Math.min(window.innerWidth  - block.offsetWidth,  e.clientX - ox));
+    var y = Math.max(0, Math.min(window.innerHeight - block.offsetHeight, e.clientY - oy));
+    block.style.left   = x + 'px';
+    block.style.top    = y + 'px';
+    block.style.bottom = 'auto';
+  });
+  document.addEventListener('mouseup', function() { dragging = false; });
+})();
+
+/* ── markdown renderer ── */
+function mdToHtml(md) {
+  var blocks = [];
+  var s = md.replace(/```(\w*)\n?([\s\S]*?)```/g, function(_, lang, code) {
+    var safe = code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    blocks.push('<pre><code>' + safe + '</code></pre>');
+    return '\x02' + (blocks.length - 1) + '\x03';
+  });
+  s = s.replace(/`([^`\n]+)`/g, function(_, c) {
+    return '<code>' + c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</code>';
+  });
+  s = s.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  s = s.replace(/^## (.+)$/gm,  '<h2>$1</h2>');
+  s = s.replace(/^# (.+)$/gm,   '<h1>$1</h1>');
+  s = s.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  s = s.replace(/\*\*(.+?)\*\*/g,     '<strong>$1</strong>');
+  s = s.replace(/\*(.+?)\*/g,         '<em>$1</em>');
+  s = s.replace(/((?:^[*\-] .+$\n?)+)/gm, function(b) {
+    return '<ul>' + b.trim().split('\n').map(function(l){ return '<li>'+l.replace(/^[*\-] /,'')+'</li>'; }).join('') + '</ul>';
+  });
+  s = s.replace(/((?:^\d+\. .+$\n?)+)/gm, function(b) {
+    return '<ol>' + b.trim().split('\n').map(function(l){ return '<li>'+l.replace(/^\d+\. /,'')+'</li>'; }).join('') + '</ol>';
+  });
+  s = s.split(/\n{2,}/).map(function(p) {
+    p = p.trim();
+    if (!p) return '';
+    if (/^<(h[1-6]|ul|ol|pre)/.test(p) || /\x02\d+\x03/.test(p)) return p;
+    return '<p>' + p.replace(/\n/g,'<br>') + '</p>';
+  }).join('\n');
+  s = s.replace(/\x02(\d+)\x03/g, function(_, i){ return blocks[+i]; });
+  return s;
+}
+
+function detectDir(text) {
+  var heb = (text.match(/[֐-׿]/g) || []).length;
+  var lat  = (text.match(/[a-zA-Z]/g) || []).length;
+  return heb > lat ? 'rtl' : 'ltr';
+}
+
+/* ── append a bubble to the chat thread ── */
+function appendBubble(role, content) {
+  var chat = document.getElementById('ai-chat');
+  chat.style.display = 'flex';
+
+  var bubble = document.createElement('div');
+  bubble.className = 'ai-bubble ai-bubble-' + role;
+
+  if (role === 'user') {
+    bubble.textContent = content;
+  } else {
+    var dir = detectDir(content);
+    bubble.setAttribute('dir', dir);
+    bubble.style.textAlign = dir === 'rtl' ? 'right' : 'left';
+    bubble.innerHTML = mdToHtml(content);
+  }
+
+  chat.appendChild(bubble);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+/* ── build system prompt from current page DOM ── */
+function buildSystemPrompt() {
+  var siteUrl    = window.AI_SITE_URL || '';
+  var currentUrl = window.location.href;
+  var mainEl = (
+    document.querySelector('article') ||
+    document.querySelector('.bd-content') ||
+    document.querySelector('#main-content') ||
+    document.querySelector('main') ||
+    document.body
+  );
+  var pageText = mainEl ? mainEl.innerText.replace(/\s+/g, ' ').trim().slice(0, 3000) : '';
+
+  var prompt =
+    "You are PyProf, a helpful AI assistant embedded in a university Python programming course.\n" +
+    "Respond in the same language the student writes in (Hebrew or English). Be concise and clear.\n\n" +
+    "Course website: " + siteUrl + "\n" +
+    "Current page:   " + currentUrl + "\n\n";
+  if (pageText)
+    prompt += "Content of the current page:\n---\n" + pageText + "\n---\n\n";
+  prompt += "Use this context to give relevant, specific answers about what the student is studying right now.";
+  return prompt;
+}
+
+/* ── send prompt ── */
+async function sendToAI() {
+  var prompt = document.getElementById('ai-prompt-input').value.trim();
+  if (!prompt) { alert('אנא כתבו שאלה לפני השליחה'); return; }
+
+  var btn     = document.getElementById('ai-send-btn');
+  var loading = document.getElementById('ai-loading');
+
+  // show user bubble immediately
+  appendBubble('user', prompt);
+  document.getElementById('ai-prompt-input').value = '';
+
+  btn.disabled = true;
+  btn.textContent = '⏳';
+  loading.style.display = 'inline';
+
+  conversationHistory.push({role: 'user', content: prompt});
+
+  var controller = new AbortController();
+  var timeout = setTimeout(function(){ controller.abort(); }, 30000);
+
+  try {
+    var res = await fetch('https://text.pollinations.ai/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      signal: controller.signal,
+      body: JSON.stringify({
+        messages: [{role:'system', content: buildSystemPrompt()}].concat(conversationHistory),
+        model: 'openai'
+      })
+    });
+    clearTimeout(timeout);
+    if (!res.ok) throw new Error('שגיאת שרת: ' + res.status);
+    var text = await res.text();
+    conversationHistory.push({role: 'assistant', content: text});
+    appendBubble('assistant', text);
+  } catch(e) {
+    clearTimeout(timeout);
+    var msg = (e.name === 'AbortError') ? '⏱️ הבקשה לקחה יותר מדי זמן. נסו שוב.' : '❌ שגיאה: ' + e.message;
+    conversationHistory.pop();  // remove unanswered user message from history
+    appendBubble('assistant', msg);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '▶ שלח';
+    loading.style.display = 'none';
+  }
+}
+
+/* ── send on Ctrl+Enter / Cmd+Enter ── */
+document.getElementById('ai-prompt-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendToAI();
+});
+</script>
