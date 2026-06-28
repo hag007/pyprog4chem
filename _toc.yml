@@ -169,35 +169,7 @@ parts:
           - file: course/weeks/week_9/9_3_pca
             title: "ניתוח PCA של ספקטרום בעזרת SciPy"
 
-      # - file: course/weeks/week_10
-      #   title: "שבוע 10: Numpy מתקדם"
-      #   sections:
-      #     - file: course/weeks/week_10/10_1_matrix_operations
-      #       title: "פעולות מטריציוניות מתקדמות"
-      #     - file: course/weeks/week_10/10_2_linear_system
-      #       title: "פתרון מערכות ליניאריות"
-      #     - file: course/weeks/week_10/10_3_eigen_values
-      #       title: "ערכים ווקטורים עצמיים"
-      #     - file: course/weeks/week_10/10_4_SVD
-      #       title: "SVD"
-      #     - file: course/weeks/week_10/10_7_exercises
-      #       title: "תרגול עצמי"
-      #     - file: course/weeks/week_10/10_5_example_image_SVD
-      #       title: "תרגול: דחיסת תמונה באמצעות SVD"
-      #     - file: course/weeks/week_10/10_6_example_PI_MC
-      #       title: "תרגול: הערכת π בשיטת מונטה־קרלו"
-
-      # - file: course/weeks/week_11
-      #   title: "שבוע 11: SciPy"
-      #   sections:
-      #     - file: course/weeks/week_11/11_1_physical_consts
-      #       title: "קבועים פיזיקליים ויחידות"
-      #     - file: course/weeks/week_11/11_2_integration
-      #       title: "אינטגרציה נומרית"
-      #     - file: course/weeks/week_11/11_3_optimization
-      #       title: "אופטימיזציה" 
-
-      - file: course/weeks/week_12
+      - file: course/weeks/week_10
         title: "שבוע 10: Pandas"
         sections:
           - file: course/weeks/week_10/10_1_pandas_intro
