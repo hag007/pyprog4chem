@@ -1,0 +1,17 @@
+compound,formula,family,molar_mass_g_mol,melting_point_C,boiling_point_C,polarity
+water,H2O,inorganic,18.02,0.0,100.0,polar
+methanol,CH4O,alcohol,32.04,-97.6,64.7,polar
+ethanol,C2H6O,alcohol,46.07,-114.1,78.4,polar
+1-propanol,C3H8O,alcohol,60.10,-126.0,97.2,polar
+acetone,C3H6O,ketone,58.08,-94.7,56.1,polar
+diethyl ether,C4H10O,ether,74.12,-116.3,34.6,weakly polar
+hexane,C6H14,alkane,86.18,-95.0,68.7,nonpolar
+heptane,C7H16,alkane,100.20,-90.6,98.4,nonpolar
+benzene,C6H6,aromatic,78.11,5.5,80.1,nonpolar
+toluene,C7H8,aromatic,92.14,-95.0,110.6,nonpolar
+acetic acid,C2H4O2,carboxylic acid,60.05,16.6,118.1,polar
+chloroform,CHCl3,halogenated,119.38,-63.5,61.2,weakly polar
+ethane,C2H6,alkane,30.07,-182.8,-88.6,nonpolar
+butane,C4H10,alkane,58.12,-138.3,-0.5,nonpolar
+naphthalene,C10H8,aromatic,128.17,80.2,218.0,nonpolar
+benzoic acid,C7H6O2,carboxylic acid,122.12,122.4,249.2,polar

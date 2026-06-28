@@ -200,12 +200,13 @@ parts:
       - file: course/weeks/week_12
         title: "שבוע 10: Pandas"
         sections:
-          - file: vendor/virtual-pyprog/19_1_pandas-intro
+          - file: course/weeks/week_10/10_1_pandas_intro
             title: "מבוא לעבודה עם Pandas"
-          - file: vendor/virtual-pyprog/19_2_create-df
-            title: "יצירת טבלה"
-          - file: vendor/virtual-pyprog/19_3_access-df
+          - file: course/weeks/week_10/10_2_loading_tables
+            title: "טעינת טבלאות"
+          - file: course/weeks/week_10/10_3_accessing_data
             title: "גישה לנתונים בטבלה"
-          - file: vendor/virtual-pyprog/19_4_basic_editing
-            title: "עריכת טבלה"
-
+          - file: course/weeks/week_10/10_4_calculations_filtering
+            title: "חישובים וסינון"
+          - file: course/weeks/week_10/10_5_plotting_and_numpy
+            title: "ציור גרפים והמרה ל־NumPy"
